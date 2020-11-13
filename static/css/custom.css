@@ -1,0 +1,21 @@
+:root {
+    --sepia: #ba9595;
+    --dark-sepia: #936b6b;
+}
+
+h1.title,
+h1.title a,
+.tags a,
+.nav-item > a {
+    color: var(--sepia);
+}
+
+.nav-item > a:hover {
+    color: var(--dark-sepia);
+}
+
+.logo {
+    width: 100px;
+    padding-right: 1em;
+    opacity: 0.85;
+}

@@ -1,0 +1,29 @@
+languageCode = "en-us"
+title = "Blog"
+theme = "kiss"
+copyright = "&copy; <a href=\"https://github.com/reanahub\">REANA</a> 2020"
+Paginate = 5 # Number of posts per page
+enableRobotsTXT = true
+
+[params.rss] # Adding this tag enables RSS feed
+includeContent = true # Includes whole content in rss
+
+[params.info]
+homeTitle = "REANA Blog"
+codeCopy = true
+taxonomiesCount = true
+
+[params.assets]
+customCSS = ["css/custom.css"]
+
+[params.social]
+twitter = "reanahub"
+github = "reanahub"
+email = "reana-team@cern.ch"
+rss = "index.xml" # Add this to show RSS button in social.
+
+[params.social.config]
+platforms = ["github","twitter","email"]
+
+[params.sections_right]
+"/tags/" = "Tags"
