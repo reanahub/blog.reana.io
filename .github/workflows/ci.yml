@@ -1,0 +1,41 @@
+# This file is part of REANA.
+# Copyright (C) 2020 CERN.
+#
+# REANA is free software; you can redistribute it and/or modify it
+# under the terms of the MIT License; see LICENSE file for more details.
+
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  lint-shellcheck:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Runs shell script static analysis
+        run: |
+          sudo apt-get install shellcheck
+          ./run-tests.sh --check-shellscript
+
+  lint-dockerfile:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Check Dockerfile compliance
+        run: ./run-tests.sh --check-dockerfile
+
+  docker-build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Build Docker image
+        run: ./run-tests.sh --check-docker-build
