@@ -1,3 +1,4 @@
+baseurl = "/"
 languageCode = "en-us"
 title = "Blog"
 theme = "kiss"
@@ -14,7 +15,7 @@ codeCopy = true
 taxonomiesCount = true
 
 [params.assets]
-customCSS = ["css/custom.css"]
+customCSS = ["/css/custom.css"]
 
 [params.social]
 twitter = "reanahub"

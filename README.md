@@ -18,7 +18,7 @@ $ hugo new posts/2020/my-new-post.md
 ### Dev mode
 
 ```console
-$ docker build -t reanahub/blog.reana.io --build-arg HUGO_CMD='-D -b http://localhost:8080/' .
+$ docker build -t reanahub/blog.reana.io --build-arg HUGO_CMD='-D' .
 $ docker run --rm --name reanablog -p 8080:8080 reanahub/blog.reana.io
 $ firefox http://localhost:8080
 ```
@@ -26,7 +26,7 @@ $ firefox http://localhost:8080
 ### Production mode
 
 ```console
-$ docker build -t reanahub/blog.reana.io --build-arg HUGO_CMD='--minify --gc -b http://localhost:8080/' --build-arg HUGO_ENV_ARG=production . --no-cache
+$ docker build -t reanahub/blog.reana.io --build-arg HUGO_CMD='--minify --gc' .
 $ docker run --rm --name reanablog -p 8080:8080 reanahub/blog.reana.io
 $ firefox http://localhost:8080
 ```
@@ -34,7 +34,7 @@ $ firefox http://localhost:8080
 ## Openshift
 
 ```console
-$ oc new-build https://github.com/reanahub/blog.reana.io --build-arg=HUGO_CMD='--minify --gc -b https://reana-blog.web.cern.ch/'
+$ oc new-build https://github.com/reanahub/blog.reana.io --build-arg=HUGO_CMD='--minify --gc'
 $ oc new-app openshift-registry.web.cern.ch/reana-blog/blogreanaio
 # create route manually via UI
 ```
