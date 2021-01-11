@@ -1,4 +1,4 @@
-FROM klakegg/hugo:0.78.2-onbuild AS hugo
+FROM klakegg/hugo:0.80.0-onbuild AS hugo
 
 FROM nginx:1.19.4
 EXPOSE 8080
