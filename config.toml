@@ -2,7 +2,7 @@ baseurl = "/"
 languageCode = "en-us"
 title = "Blog"
 theme = "kiss"
-copyright = "&copy; <a href=\"https://github.com/reanahub\">REANA</a> 2020"
+copyright = "&copy; <a href=\"https://github.com/reanahub\">REANA</a> 2021"
 Paginate = 5 # Number of posts per page
 enableRobotsTXT = true
 
