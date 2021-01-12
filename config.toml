@@ -1,8 +1,8 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "Blog"
+title = "blog"
 theme = "kiss"
-copyright = "&copy; <a href=\"https://github.com/reanahub\">REANA</a> 2021"
+copyright = "&copy; <a href=\"https://home.cern/\">CERN</a> 2021"
 Paginate = 5 # Number of posts per page
 enableRobotsTXT = true
 
@@ -10,7 +10,7 @@ enableRobotsTXT = true
 includeContent = true # Includes whole content in rss
 
 [params.info]
-homeTitle = "REANA Blog"
+homeTitle = "REANA blog"
 codeCopy = true
 taxonomiesCount = true
 

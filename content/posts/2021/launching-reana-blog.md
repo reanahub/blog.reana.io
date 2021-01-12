@@ -1,8 +1,6 @@
 ---
 title: "REANA blog is launched!"
-date: 2021-01-11T16:35:46+01:00
-tags:
-  - reana
+date: 2021-01-12T10:19:46+01:00
 ---
 
 We are glad to announce the launch of a new blog series about [REANA
