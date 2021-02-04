@@ -5,6 +5,7 @@ theme = "kiss"
 copyright = "&copy; <a href=\"https://home.cern/\">CERN</a> 2021"
 Paginate = 5 # Number of posts per page
 enableRobotsTXT = true
+pygmentsUseClasses = true # code highlighting
 
 [params.rss] # Adding this tag enables RSS feed
 includeContent = true # Includes whole content in rss
@@ -15,7 +16,7 @@ codeCopy = true
 taxonomiesCount = true
 
 [params.assets]
-customCSS = ["/css/custom.css"]
+customCSS = ["/css/custom.css", "css/syntax.css"]
 
 [params.social]
 twitter = "reanahub"

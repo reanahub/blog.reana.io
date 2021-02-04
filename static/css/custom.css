@@ -5,6 +5,12 @@
 
 h1.title,
 h1.title a,
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
 .tags a,
 .nav-item > a {
     color: var(--sepia);
@@ -18,4 +24,9 @@ h1.title a,
     width: 100px;
     padding-right: 1em;
     opacity: 0.85;
+}
+
+.content img {
+    display: block;
+    margin: auto;
 }
