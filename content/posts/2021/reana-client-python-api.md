@@ -416,4 +416,4 @@ Example output:
 See also:
 - [The reana-client Python API reference guide](https://reana-client.readthedocs.io/en/maint-0.7/#module-reana_client.api.client)
 - [ROOT6 RooFit analysis example](https://github.com/reanahub/reana-demo-root6-roofit/)
-- [Jupyter notebook with example code](https://github.com/reanahub/blog.reana.io/examples/ipynb/reana-client-python-api.ipynb)
+- [Jupyter notebook with example code](https://github.com/reanahub/blog.reana.io/blob/master/examples/ipynb/reana-client-python-api.ipynb)
