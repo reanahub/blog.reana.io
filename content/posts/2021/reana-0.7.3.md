@@ -344,7 +344,7 @@ Unable to find image 'python:3.9-slim' locally
 6f28985ad184: Pulling fs layer
 ...
 Status: Downloaded newer image for python:3.9-slim
-  -> INFO: Environment image uses UID 1000 but will run as UID 0.
+  -> INFO: Environment image uses UID 0 but will run as UID 1000.
 ```
 
 We can see that the image was pulled locally and there is a new
