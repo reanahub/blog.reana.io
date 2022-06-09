@@ -28,4 +28,3 @@ rss = "index.xml" # Add this to show RSS button in social.
 platforms = ["github","twitter","email"]
 
 [params.sections_right]
-"/tags/" = "Tags"

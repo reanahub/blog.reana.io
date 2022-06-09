@@ -30,3 +30,16 @@ h1.title a,
     display: block;
     margin: auto;
 }
+
+#google-search {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    border: 1px solid #eee;
+}
+
+#google-search:focus {
+    outline: none !important;
+    border: 1px solid #a9a9a9;
+}

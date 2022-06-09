@@ -58,10 +58,26 @@
         </a>
         {{- end -}}
         {{- end -}}
+        <form onsubmit="google_search(); return false;">
+          <input
+              type="text"
+              id="google-search"
+              placeholder="Search"
+          />
+        </form>
       </div>
       {{ end }}
       {{ end }}
     </nav>
   </div>
   <script src="/js/navicon-shift.js"></script>
+  <script type="text/javascript">
+    function google_search() {
+        const query = document.getElementById('google-search').value;
+        const domain = window.location.hostname;
+        window.open(
+          'https://www.google.com/search?q=' + query + '+site:' + domain
+        );
+    }
+  </script>
 </section>
