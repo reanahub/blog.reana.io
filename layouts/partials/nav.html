@@ -73,11 +73,10 @@
   <script src="/js/navicon-shift.js"></script>
   <script type="text/javascript">
     function google_search() {
-        const query = document.getElementById('google-search').value;
+        const search = document.getElementById('google-search').value;
         const domain = window.location.hostname;
-        window.open(
-          'https://www.google.com/search?q=' + query + '+site:' + domain
-        );
+        const query = 'site:' + domain + ' ' + search
+        window.open('https://www.google.com/search?filter=0&q=' + encodeURIComponent(query), '_self');
     }
   </script>
 </section>
