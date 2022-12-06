@@ -1,10 +1,6 @@
 ---
 title: "REANA 0.7.4 is released"
 date: 2021-07-07T14:00:00+01:00
-tags:
-  - release
-  - client
-  - cluster
 ---
 
 We are glad to announce the release of REANA 0.7.4, a minor update

@@ -1,10 +1,6 @@
 ---
 title: "REANA 0.8.0 is released"
 date: 2021-11-30T10:19:06+01:00
-tags:
-  - release
-  - client
-  - cluster
 ---
 
 We are glad to announce the release of REANA 0.8.0, a major update

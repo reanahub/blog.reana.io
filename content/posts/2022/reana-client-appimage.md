@@ -1,9 +1,6 @@
 ---
 title: "Standalone reana-client executables for Linux systems"
 date: 2022-06-01T08:00:00+01:00
-tags:
-  - client
-  - linux
 ---
 
 The usual way of creating, executing and managing REANA workflows is by means

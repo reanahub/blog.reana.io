@@ -1,10 +1,6 @@
 ---
 title: "Launching workflows from external sources using web interface"
 date: 2022-05-18T07:00:00+02:00
-tags:
-  - API
-  - cluster
-  - ui
 ---
 
 If you host your analysis workflows on publicly accessible external sources

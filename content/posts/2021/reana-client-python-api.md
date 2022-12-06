@@ -1,10 +1,6 @@
 ---
 title: "How to run REANA workflows using Python API"
 date: 2021-03-05T9:00:00+01:00
-tags:
-  - API
-  - client
-  - Python
 ---
 
 The usual way of running REANA workflows is by means of the

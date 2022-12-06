@@ -1,8 +1,6 @@
 ---
 title: "REANA 0.7.2 is released"
 date: 2021-02-04T14:46:00+01:00
-tags:
-  - release
 ---
 
 We are glad to announce the release of REANA 0.7.2, a minor update

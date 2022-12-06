@@ -1,10 +1,6 @@
 ---
 title: "Support for running Snakemake workflows"
 date: 2021-11-30T12:00:00+02:00
-tags:
-  - snakemake
-  - cluster
-  - client
 ---
 
 We are thrilled to announce the support for running

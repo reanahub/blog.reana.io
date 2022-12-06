@@ -1,10 +1,6 @@
 ---
 title: "REANA 0.7.3 is released"
 date: 2021-03-24T17:00:00+01:00
-tags:
-  - release
-  - client
-  - cluster
 ---
 
 We are happy to announce REANA 0.7.3. This minor bug fix release adds
