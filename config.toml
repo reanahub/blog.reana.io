@@ -2,7 +2,7 @@ baseurl = "/"
 languageCode = "en-us"
 title = "blog"
 theme = "kiss"
-copyright = "&copy; <a href=\"https://home.cern/\">CERN</a> 2022"
+copyright = "&copy; <a href=\"https://home.cern/\">CERN</a> 2023"
 Paginate = 5 # Number of posts per page
 enableRobotsTXT = true
 pygmentsUseClasses = true # code highlighting
