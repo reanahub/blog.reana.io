@@ -72,13 +72,41 @@ liberate some resources.
 
 ## What's new for the administrators?
 
-### Configure workspace retention rules
+### Configure global workspace retention rules
 
-### Configure an additional volume to be used by the database and the message broker
+Workspace retention rules are giving users the possibility to remove unwanted files from their workflows' workspaces.
+However, administrators can also define a global workspace file retention period, after which all the files that are not listed as inputs or outputs of a workflow will be deleted, regardless of user-defined workspace retention rules.
+This can be achieved by setting the `workspaces.retention_rules.maximum_period` Helm value to the desired amount of retention days.
+Please note that, by default, files are retained forever.
+
+For more information about this, see the related documentation page about [configuring global workspace retention rules](https://docs.reana.io/administration/configuration/configuring-global-workspace-retention-rules).
+
+### Configure an additional volume for infrastructure components
+
+Up until now, REANA has used only one shared storage volume to store all the workflows' workspaces, together with the database's and message broker's data.
+This means that, if the shared storage became full, some of the REANA components would fail due to the lack of free disk space.
+While this is still the default behaviour of REANA, now it is also possible to configure a second infrastructure storage volume that can be used to separate workflows' workspaces from the data stored by REANA's infrastructure components.
+
+If you are interested in this change, please see the documentation page about [configuring storage volumes](https://docs.reana.io/administration/configuration/configuring-storage-volumes).
 
 ### Configure scheduler requeue count for busy cluster situations
 
-### Configure the generation of a self-signed TLS certificate
+Under specific circumstances, for example when the REANA cluster is busy, it can happen that some workflows cannot be scheduled.
+These workflows are then queued again so that REANA can retry scheduling them in the future.
+However, workflows with high priority that are requeued many times can overwhelm the queue, preventing other workflows from being executed.
+
+To avoid this, REANA 0.9.0 introduces a limit on the number of scheduling retries of each workflow. This limit is set to 200 retries by default, but it can be customized with the `reana_server.environment.REANA_SCHEDULER_REQUEUE_COUNT` Helm value.
+
+### Configure custom TLS certificates
+
+REANA 0.9.0 also improves the handling of TLS certificates.
+Without additional configuration needed, a self-signed certificate lasting 90 days is automatically generated each time REANA is deployed or upgraded.
+This is enough for development instances, but a valid certificate issued by a trusted Certificate Authority should be used for production deployments.
+
+For this reason, it is possible to disable the generation of the default self-signed certificate by setting the `ingress.tls.self_signed_cert` Helm value to false.
+You can then provide a custom TLS certificate by creating an appropriate Kubernetes TLS secret and by setting the `ingress.tls.secret_name` Helm value to the name of this newly-created secret.
+
+See the documentation page about [configuring TLS certificates](https://docs.reana.io/administration/configuration/configuring-tls-certificates) to learn more about this.
 
 ### How to upgrade existing REANA 0.8 clusters
 
