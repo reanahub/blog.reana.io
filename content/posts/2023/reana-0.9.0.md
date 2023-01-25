@@ -35,7 +35,7 @@ the web using the new REANA launcher page. You can host your workflows on a
 public location and be able to access and run them on REANA without having to do
 any manual steps.
 
-[![Launch home](/images/launching-workflows-launcher-home.png)](https://reana.cern.ch/launch)
+[![Launch home](/images/reana-0.9.0-launcher.png)](https://reana.cern.ch/launch)
 
 For more information about this new feature please check the dedicated blog post
 about [launching workflows from external sources using web interface](/posts/2022/launching-workflows/).
@@ -69,6 +69,8 @@ approaching or has reached its limit. This feature is intended to help users
 stay within their allocated Disk space and CPU consumption limits and inform
 them when deletion of unnecessary workflow runs should be performed in order to
 liberate some resources.
+
+![Quota notifications](/images/reana-0.9.0-notifications.png)
 
 ## What's new for the administrators?
 
