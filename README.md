@@ -27,16 +27,16 @@ $ hugo new posts/2021/my-new-post.md
 ### Dev mode
 
 ```console
-$ docker build -t reanahub/blog.reana.io --build-arg HUGO_CMD='-D' .
-$ docker run --rm --name reanablog -p 8080:8080 reanahub/blog.reana.io
+$ docker build -t docker.io/reanahub/blog.reana.io --build-arg HUGO_CMD='-D' .
+$ docker run --rm --name reanablog -p 8080:8080 docker.io/reanahub/blog.reana.io
 $ firefox http://localhost:8080
 ```
 
 ### Production mode
 
 ```console
-$ docker build -t reanahub/blog.reana.io --build-arg HUGO_CMD='--minify --gc' .
-$ docker run --rm --name reanablog -p 8080:8080 reanahub/blog.reana.io
+$ docker build -t docker.io/reanahub/blog.reana.io --build-arg HUGO_CMD='--minify --gc' .
+$ docker run --rm --name reanablog -p 8080:8080 docker.io/reanahub/blog.reana.io
 $ firefox http://localhost:8080
 ```
 

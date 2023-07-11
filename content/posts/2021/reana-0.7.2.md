@@ -33,7 +33,7 @@ components:
   ...
   reana_server:
     imagePullPolicy: IfNotPresent
-    image: reanahub/reana-server:0.7.1
+    image: docker.io/reanahub/reana-server:0.7.1
     environment:
       REANA_MAX_CONCURRENT_BATCH_WORKFLOWS: 30
 -     REANA_USER_EMAIL_CONFIRMATION: true
@@ -66,7 +66,7 @@ components:
      docs_url: http://docs.reana.io
      forum_url: https://forum.reana.io
      imagePullPolicy: IfNotPresent
-     image: reanahub/reana-ui:0.7.0
+     image: docker.io/reanahub/reana-ui:0.7.0
 +    hide_signup: true
 ```
 

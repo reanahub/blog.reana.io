@@ -35,7 +35,7 @@ rule gendata:
     params:
         events=config["events"]
     container:
-        "docker://reanahub/reana-env-root6:6.18.04"
+        "docker://docker.io/reanahub/reana-env-root6:6.18.04"
     shell:
         "mkdir -p results && root -b -q '{input.gendata_tool}({params.events},\"{output}\")'"
 
@@ -46,7 +46,7 @@ rule fitdata:
     output:
         "results/plot.png"
     container:
-        "docker://reanahub/reana-env-root6:6.18.04"
+        "docker://docker.io/reanahub/reana-env-root6:6.18.04"
     shell:
         "root -b -q '{input.fitdata_tool}(\"{input.data}\",\"{output}\")'"
 ```
@@ -170,7 +170,7 @@ $ reana-client logs -w my-analysis.42
 ==> Workflow ID: 4455a6b2-3d94-4694-ae99-e493327cd53f
 ==> Compute backend: Kubernetes
 ==> Job ID: reana-run-job-6f57f1c8-8edf-4840-9423-b638e664bf57
-==> Docker image: reanahub/reana-env-root6:6.18.04
+==> Docker image: docker.io/reanahub/reana-env-root6:6.18.04
 ==> Command: mkdir -p results && root -b -q 'code/gendata.C(20000,"results/data.root")'
 ==> Status: finished
 ==> Started: 2021-11-26T12:46:17
@@ -191,7 +191,7 @@ $ reana-client logs -w my-analysis.42 | grep '^==>'
 ==> Workflow ID: 4455a6b2-3d94-4694-ae99-e493327cd53f
 ==> Compute backend: Kubernetes
 ==> Job ID: reana-run-job-6f57f1c8-8edf-4840-9423-b638e664bf57
-==> Docker image: reanahub/reana-env-root6:6.18.04
+==> Docker image: docker.io/reanahub/reana-env-root6:6.18.04
 ==> Command: mkdir -p results && root -b -q 'code/gendata.C(20000,"results/data.root")'
 ==> Status: finished
 ==> Started: 2021-11-26T12:46:17
@@ -201,7 +201,7 @@ $ reana-client logs -w my-analysis.42 | grep '^==>'
 ==> Workflow ID: 4455a6b2-3d94-4694-ae99-e493327cd53f
 ==> Compute backend: Kubernetes
 ==> Job ID: reana-run-job-2da81be7-5108-41cd-8b7c-ffc0f081b3bd
-==> Docker image: reanahub/reana-env-root6:6.18.04
+==> Docker image: docker.io/reanahub/reana-env-root6:6.18.04
 ==> Command: root -b -q 'code/fitdata.C("results/data.root","results/plot.png")'
 ==> Status: finished
 ==> Started: 2021-11-26T12:46:23
