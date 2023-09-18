@@ -1,9 +1,11 @@
 ---
 title: "Enable users to log in with your own SSO Provider"
-date: 2023-03-16T09:00:00+01:00
+date: 2023-09-18T09:00:00+01:00
+categories: Admin
+tags: Admin
 ---
 
-With the latest REANA release 0.9.1-alpha.2, administrators can now configure their own third-party Keycloak Single Sign-On (SSO) authentication provider. 
+With the latest REANA release, administrators can now configure their own third-party Keycloak Single Sign-On (SSO) authentication provider.
 
 ## What is Single Sign-On (SSO)?
 
@@ -23,58 +25,60 @@ Configuring your own third-party SSO authentication provider in REANA is a simpl
 
 ```yaml
 login:
-  - name: your-provider
-    type: keycloak
+  - name: "yourprovider"
+    type: "keycloak"
     config:
       title: "YOUR PROVIDER"
-      base_url: "https://your-host.com"
-      realm_url: "https://your-host.com/auth/realms/your-realm"
-      auth_url: "https://your-host.com/auth/realms/your-realm/protocol/openid-connect/auth"
-      token_url: "https://your-host.com/auth/realms/your-realm/protocol/openid-connect/token"
-      userinfo_url: "https://your-host.com/auth/realms/your-realm/protocol/openid-connect/userinfo"
+      base_url: "https:/keycloak.example.org"
+      realm_url: "https://keycloak.example.org/auth/realms/your-realm"
+      auth_url: "https://keycloak.example.org/auth/realms/your-realm/protocol/openid-connect/auth"
+      token_url: "https://keycloak.example.org/auth/realms/your-realm/protocol/openid-connect/token"
+      userinfo_url: "https://keycloak.example.org/auth/realms/your-realm/protocol/openid-connect/userinfo"
 ```
 
-Further, you'll need to add a Kubernetes secret with the client key (also referred to as client ID) and secret. Here is an example:
+The client key (also referred to as client ID) and the secret can be added in the following way:
+
+```yaml
+secrets:
+  login:
+    yourprovider:
+      consumer_key: <your-client-id>
+      consumer_secret: <your-client-secret>
+```
+
+Alternativly, you can obtain these secrets form a pre existing Kubernetes secret with the client key and secret. Here is an example:
 
 ```yaml
 apiVersion: v1
 data:
-  PROVIDER_SECRETS: <json-string>
+  consumer_key: <your-client-id>
+  consumer_secret: <your-client-secret>
 kind: Secret
-  name: reana-login-provider-secrets
-  namespace: <reana-namespace>
+metadata:
+  name: <your-secret-name>
 type: Opaque
 ```
 
-The secret needs to be called `reana-login-provider-secrets` and contain one key called `PROVIDER_SECRETS`. This key needs to be in JSON format. Here is an example:
-
-```json
-{
-	"your-provider": {
-		"consumer_key": "<client-key>",
-		"consumer_secret": "<client-secret>"
-	}
-}
-```
-
-The final deployable secret would then look like this:
+Depending on the way you deploy it, you can then get these values from the secret. For example, with Flux you could use `ValuesFrom` like this:
 
 ```yaml
-apiVersion: v1
-data:
-  PROVIDER_SECRETS: '{"your-provider": {"consumer_key": "<client-key>", "consumer_secret": "<client-secret>"}}'
-kind: Secret
-  name: reana-login-provider-secrets
-  namespace: <reana-namespace>
-type: Opaque
+  valuesFrom:
+    - kind: Secret
+      name: <your-secret-name>
+      valuesKey: consumer_key
+      targetPath: secrets.login.escape-iam.consumer_key
+    - kind: Secret
+      name: <your-secret-name>
+      valuesKey: consumer_secret
+      targetPath: secrets.login.escape-iam.consumer_secret
 ```
 
 Once you have updated the values, you can upgrade your Helm deployment. After that, you should be able to see an option to log in with your SSO provider.
 
 ![ui-sso-keycloak](/images/ui-sso-keycloak.png)
 
+For full and updated documentation, please visit the [Reana admin documentation](https://docs.reana.io/administration/configuration/configuring-access/#keycloak-single-sign-on-configuration).
+
 ## Conclusion
 
 Configuring your own third-party SSO authentication provider in REANA gives users more flexibility and control over their authentication workflow. With the latest REANA release, users can now easily configure their own SSO provider, making it easier for them to access the platform with the same credentials they use for other applications. This not only saves time, but also improves security by reducing the number of passwords users need to remember.
-
-Additionally you can find information in the REANA docs [here](https://docs.reana.io/administration/configuration/configuring-access/#keycloak-single-sign-on-configuration)
