@@ -5,13 +5,13 @@ categories: Guest
 tags: Guest
 ---
 
-One of the key objectives of European Open Science Cloud projects is to consolidate the analysis workflows used in Cosmology, Astrophysics, and High Energy Physics into a unified framework. This effort aims to simplify the process of data sharing, software distribution, and analysis code dissemination among researchers. The development of Science Projects focuses on specific use cases, particularly those related to Dark Matter and Extreme Universe exploration. These endeavors depend on the implementation of the Virtual Research Environment, a prototype analysis platform that adheres to the FAIR data principles.
+One of the key objectives of European Open Science Cloud projects is to consolidate the analysis workflows used in Cosmology, Astrophysics, and High Energy Physics into a unified framework. This effort aims to simplify the process of data access, data sharing, software distribution, and analysis among researchers. The development of Science Projects focuses on specific use cases, particularly those related to Dark Matter and Extreme Universe. These endeavours depend on the implementation of the Virtual Research Environment.
 
-The [Virtual Research Environment](https://vre-hub.github.io), which is accessible through a shared authentication framework, provides access to data from various experiments such as ATLAS, Fermi-LAT, CTA, Darkside, Km3Net, Virgo, and LOFAR. This data is made available through a dependable distributed storage infrastructure known as the Data Lake. To access, analyze, and share this data, researchers can use a Jupyterhub instance deployed on a scalable Kubernetes infrastructure, offering an interactive graphical interface.
+The [Virtual Research Environment](https://vre-hub.github.io) is a prototype analysis platform that adheres to the FAIR data principles. It is accessible through a central IAM system and provides access to data from various experiments such as ATLAS, Fermi-LAT, CTA, Darkside, Km3Net, Virgo, and LOFAR. This data is made available through a distributed storage infrastructure known as the Data Lake. To access, analyze, and share this data, researchers can use a JupyterHub instance deployed on a scalable Kubernetes infrastructure, offering an interactive graphical interface, which also integrates Reana, Dask, ROOT and a Rucio.
 
-The data access and browsing capabilities are facilitated through API calls to high-level data management and storage orchestration software called Rucio. Furthermore, Rucio has been seamlessly integrated with workflow schedulers like Reana and Dask, which support a variety of resource managers such as Slurm, HTCondor, and Kubernetes. This integration allows researchers to effectively preserve their analyses and collaborate with peers.
+The data access and browsing capabilities are facilitated through API calls to high-level data management and storage orchestration software (Rucio). Furthermore, Rucio has been seamlessly integrated with workflow schedulers like Reana and Dask, which support a variety of resource managers such as Slurm, HTCondor, and Kubernetes. This integration allows researchers to effectively run and preserve their analyses.
 
-The VRE uses the default configuration of the Reana Helm Chart with two notable additional configurations. One for SSO with a dedicated IAM instance:
+The VRE uses the default configuration of the Reana Helm Chart with two notable additional configurations. One for SSO with a dedicated IAM instance as mentioned above:
 
 ```yaml
     login:
@@ -53,4 +53,4 @@ workflow:
         - rucio upload --scope SCOPE_NAME --rse RSE_NAME <your_result_named_as_ProjectType.DataDescription.DataType>
 ```
 
-A detailed guide can also be found [here](https://vre-hub.github.io/docs/reana.html).
+For more information on the VRE please refer to [here](https://vre-hub.github.io/).
