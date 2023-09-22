@@ -1,8 +1,10 @@
 ---
 title: "Enable users to log in with your own SSO Provider"
-date: 2023-09-18T09:00:00+01:00
-categories: Admin
-tags: Admin
+date: 2023-09-22T09:00:00+01:00
+categories:
+- Admin
+tags:
+- Admin
 ---
 
 With the latest REANA release, administrators can now configure their own third-party Keycloak Single Sign-On (SSO) authentication provider.
