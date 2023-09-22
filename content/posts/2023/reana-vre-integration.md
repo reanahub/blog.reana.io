@@ -1,8 +1,10 @@
 ---
 title: "Integration of Reana into the Virtual Research Environment"
-date: 2023-09-18T09:00:00+01:00
-categories: Guest
-tags: Guest
+date: 2023-09-22T09:00:00+01:00
+categories:
+- Guest
+tags:
+- Guest
 ---
 
 One of the key objectives of European Open Science Cloud projects is to consolidate the analysis workflows used in Cosmology, Astrophysics, and High Energy Physics into a unified framework. This effort aims to simplify the process of data access, data sharing, software distribution, and analysis among researchers. The development of Science Projects focuses on specific use cases, particularly those related to Dark Matter and Extreme Universe. These endeavours depend on the implementation of the Virtual Research Environment.
