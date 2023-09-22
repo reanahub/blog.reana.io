@@ -48,7 +48,7 @@ large volumes of data spread across facilities at multiple institutions.
 ```yaml {hl_lines=[4,5,6]}
 rule mystep:
   container:
-    "docker://reana-env-rucioclient:1.0"
+    "docker://docker.io/reana-env-rucioclient:1.0"
   resources:
     voms_proxy=True,
     rucio=True

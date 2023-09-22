@@ -106,7 +106,7 @@ rule fetch_data:
     output:
         "mylocaldata/myfile_{n}.csv"
     container:
-        "docker://opensciencegrid/osgvo-el7:release-20211029-0011"
+        "docker://docker.io/opensciencegrid/osgvo-el7:release-20211029-0011"
     shell:
         "xrdcp {input[0]} {output[0]} && mkdir -p mylocaldata && touch {output[0]}"
 ```

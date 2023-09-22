@@ -22,7 +22,7 @@ run time of potentially fragile jobs. This is now possible thanks to the new
 ```yaml {hl_lines=[5]}
   steps:
     - name: mystep
-      environment: 'mydockerimage:1.0.0'
+      environment: 'docker.io/mydockerimage:1.0.0'
       compute_backend: kubernetes
       kubernetes_job_timeout: 3600
       commands:

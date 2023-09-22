@@ -72,7 +72,7 @@ rule gendata:
     params:
         events=config["events"]
     container:
-        "docker://reanahub/reana-env-root6:6.18.04"
+        "docker://docker.io/reanahub/reana-env-root6:6.18.04"
     shell:
         "mkdir -p results && root -b -q '{input.gendata_tool}({params.events},\"{output}\")'"
 
@@ -83,7 +83,7 @@ rule fitdata:
     output:
         "results/plot.png"
     container:
-        "docker://reanahub/reana-env-root6:6.18.04"
+        "docker://docker.io/reanahub/reana-env-root6:6.18.04"
     shell:
         "root -b -q '{input.fitdata_tool}(\"{input.data}\",\"{output}\")'"
 ```
@@ -264,7 +264,7 @@ rule gendata:
     params:
         events=config["events"]
     container:
-        "docker://reanahub/reana-env-root6:6.18.04"
+        "docker://docker.io/reanahub/reana-env-root6:6.18.04"
     resources:
         compute_backend="htcondorcern",
         htcondor_max_runtime="espresso"
