@@ -14,7 +14,7 @@ $ git submodule update
 ## Run locally
 
 ```console
-$ hugo server -D  # shows drafts
+$ hugo server -DF # shows drafts and future posts
 $ firefox http://localhost:1313
 ```
 
