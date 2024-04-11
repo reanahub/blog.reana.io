@@ -64,7 +64,7 @@ To learn more about this feature, please have a look at the related [Configuring
 
 There are many improvements in stability and performance of the REANA cluster that are coming with the 0.9.1 release update:
 
-- The periodic quota updater for disk and CPU quotas is now up to 70% faster.
+- The periodic quota updater for disk and CPU quotas is now up to four times faster.
 - The memory usage of uWSGI and RabbitMQ has been reduced in environments with a very high number of allowed open files.
 - Static assets of the web interface, such as CSS files and bundled JS sources, are now also served gzip-compressed to lower bandwidth consumption.
 - Monitoring the status of jobs has been improved to avoid some situations in which workflows were not correctly cleaned up in the Kubernetes cluster.
