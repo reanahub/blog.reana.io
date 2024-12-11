@@ -2,13 +2,13 @@ baseurl = "/"
 languageCode = "en-us"
 title = "blog"
 theme = "kiss"
-copyright = "&copy; <a href=\"https://home.cern/\">CERN</a> 2023"
-Paginate = 5 # Number of posts per page
+copyright = "&copy; <a href=\"https://home.cern/\">CERN</a> 2024"
+Paginate = 5
 enableRobotsTXT = true
-pygmentsUseClasses = true # code highlighting
+pygmentsUseClasses = true
 
-[params.rss] # Adding this tag enables RSS feed
-includeContent = true # Includes whole content in rss
+[params.rss]
+includeContent = true
 
 [params.info]
 homeTitle = "REANA blog"
@@ -22,9 +22,9 @@ customCSS = ["/css/custom.css", "css/syntax.css"]
 twitter = "reanahub"
 github = "reanahub"
 email = "reana-team@cern.ch"
-rss = "index.xml" # Add this to show RSS button in social.
+rss = "index.xml"
 
 [params.social.config]
-platforms = ["github","twitter","email"]
+platforms = ["github", "twitter", "email"]
 
 [params.sections_right]
