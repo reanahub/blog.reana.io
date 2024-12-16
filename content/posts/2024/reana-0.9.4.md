@@ -1,6 +1,6 @@
 ---
 title: "REANA 0.9.4 is released"
-date: 2024-12-12T06:00:00+01:00
+date: 2024-12-16T06:00:00+01:00
 ---
 
 REANA 0.9.4 has just been released. This is a minor update that adds support for
