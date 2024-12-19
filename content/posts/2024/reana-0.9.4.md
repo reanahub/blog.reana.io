@@ -59,10 +59,14 @@ rule helloworld:
 
 ### Support for Compute4PUNCH infrastructure
 
-REANA 0.9.4 enables to run workflow jobs on the PUNCH4NFDI infrastructure, if
-your REANA deployment supports it. You can check whether the REANA instance you
-are connected to supports Compute4PUNCH by means of the `reana-client info`
-command:
+REANA 0.9.4 enables to run workflow jobs on the
+[PUNCH4NFDI compute infrastructure](https://doi.org/10.1051/epjconf/202429507020),
+if your REANA deployment supports it.
+
+![REANA with Compute4PUNCH](/images/reana-0.9.4-c4p.png)
+
+You can check whether the REANA instance you are connected to supports
+Compute4PUNCH by means of the `reana-client info` command:
 
 ```console
 $ reana-client info
