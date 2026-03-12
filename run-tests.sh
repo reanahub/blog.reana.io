@@ -13,6 +13,10 @@ docker_build() {
     docker build -t docker.io/reanahub/blog.reana.io .
 }
 
+format_shfmt() {
+    shfmt -d .
+}
+
 lint_commitlint() {
     from=${2:-master}
     to=${3:-HEAD}
@@ -35,7 +39,7 @@ lint_commitlint() {
         # (iii) check absence of merge commits in feature branches
         if [ "$commit_number_of_parents" -gt 1 ]; then
             if echo "$commit_title" | grep -qE "^chore\(.*\): merge "; then
-                break  # skip checking maint-to-master merge commits
+                break # skip checking maint-to-master merge commits
             else
                 echo "✖   Merge commits are not allowed in feature branches: $commit_title"
                 found=1
@@ -48,7 +52,7 @@ lint_commitlint() {
 }
 
 lint_hadolint() {
-    docker run -i --rm docker.io/hadolint/hadolint:v2.12.0 < Dockerfile
+    docker run -i --rm docker.io/hadolint/hadolint:v2.12.0 <Dockerfile
 }
 
 lint_shellcheck() {
@@ -61,6 +65,7 @@ lint_yamllint() {
 
 all() {
     docker_build
+    format_shfmt
     lint_commitlint
     lint_hadolint
     lint_shellcheck
@@ -72,6 +77,7 @@ help() {
     echo "Options:"
     echo "  --all              Perform all checks [default]"
     echo "  --docker-build     Check Docker build"
+    echo "  --format-shfmt     Check formatting of shell scripts"
     echo "  --help             Display this help message"
     echo "  --lint-commitlint  Check linting of commit messages"
     echo "  --lint-hadolint    Check linting of Dockerfiles"
@@ -89,6 +95,7 @@ case $arg in
 --all) all ;;
 --help) help ;;
 --docker-build) docker_build ;;
+--format-shfmt) format_shfmt ;;
 --lint-commitlint) lint_commitlint "$@" ;;
 --lint-hadolint) lint_hadolint ;;
 --lint-shellcheck) lint_shellcheck ;;

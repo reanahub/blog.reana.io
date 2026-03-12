@@ -1,5 +1,5 @@
 # This file is part of REANA.
-# Copyright (C) 2020, 2023, 2024, 2026 CERN.
+# Copyright (C) 2020, 2024, 2026 CERN.
 #
 # REANA is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
@@ -9,6 +9,28 @@ name: ci
 on: [push, pull_request]
 
 jobs:
+  docker-build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Build Docker image
+        run: ./run-tests.sh --docker-build
+
+  format-shfmt:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check shell script code formatting
+        run: |
+          sudo apt-get install shfmt
+          ./run-tests.sh --format-shfmt
+
   lint-commitlint:
     runs-on: ubuntu-24.04
     steps:
@@ -35,6 +57,15 @@ jobs:
         run: |
           ./run-tests.sh --lint-commitlint ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} ${{ github.event.pull_request.number }}
 
+  lint-hadolint:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Dockerfile compliance
+        run: ./run-tests.sh --lint-hadolint
+
   lint-shellcheck:
     runs-on: ubuntu-24.04
     steps:
@@ -46,33 +77,11 @@ jobs:
           sudo apt-get install shellcheck
           ./run-tests.sh --lint-shellcheck
 
-  lint-hadolint:
+  lint-yamllint:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Check Dockerfile compliance
-        run: ./run-tests.sh --lint-hadolint
-
-  docker-build:
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: true
-
-      - name: Build Docker image
-        run: ./run-tests.sh --docker-build
-
-lint-yamllint:
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
