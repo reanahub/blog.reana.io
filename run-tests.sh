@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # This file is part of REANA.
-# Copyright (C) 2020, 2023, 2024 CERN.
+# Copyright (C) 2020, 2023, 2024, 2025, 2026 CERN.
 #
 # REANA is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
@@ -9,7 +9,11 @@
 set -o errexit
 set -o nounset
 
-check_commitlint () {
+docker_build() {
+    docker build -t docker.io/reanahub/blog.reana.io .
+}
+
+lint_commitlint() {
     from=${2:-master}
     to=${3:-HEAD}
     pr=${4:-[0-9]+}
@@ -43,35 +47,44 @@ check_commitlint () {
     fi
 }
 
-check_shellcheck () {
-    find . -name "*.sh" -exec shellcheck {} \+
-}
-
-check_dockerfile () {
+lint_hadolint() {
     docker run -i --rm docker.io/hadolint/hadolint:v2.12.0 < Dockerfile
 }
 
-check_docker_build () {
-    docker build -t docker.io/reanahub/blog.reana.io .
+lint_shellcheck() {
+    find . -name "*.sh" -exec shellcheck {} \+
 }
 
-check_all () {
-    check_commitlint
-    check_shellcheck
-    check_dockerfile
-    check_docker_build
+all() {
+    docker_build
+    lint_commitlint
+    lint_hadolint
+    lint_shellcheck
+}
+
+help() {
+    echo "Usage: $0 [options]"
+    echo "Options:"
+    echo "  --all              Perform all checks [default]"
+    echo "  --docker-build     Check Docker build"
+    echo "  --help             Display this help message"
+    echo "  --lint-commitlint  Check linting of commit messages"
+    echo "  --lint-hadolint    Check linting of Dockerfiles"
+    echo "  --lint-shellcheck  Check linting of shell scripts"
 }
 
 if [ $# -eq 0 ]; then
-    check_all
+    all
     exit 0
 fi
 
 arg="$1"
 case $arg in
-    --check-commitlint) check_commitlint "$@";;
-    --check-shellcheck) check_shellcheck;;
-    --check-dockerfile) check_dockerfile;;
-    --check-docker-build) check_docker_build;;
-    *) echo "[ERROR] Invalid argument '$arg'. Exiting." && exit 1;;
+--all) all ;;
+--help) help ;;
+--docker-build) docker_build ;;
+--lint-commitlint) lint_commitlint "$@" ;;
+--lint-hadolint) lint_hadolint ;;
+--lint-shellcheck) lint_shellcheck ;;
+*) echo "[ERROR] Invalid argument '$arg'. Exiting." && help && exit 1 ;;
 esac
